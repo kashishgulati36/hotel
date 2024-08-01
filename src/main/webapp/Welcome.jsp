@@ -22,6 +22,7 @@
         <a href="view_all_staff.jsp"><input type="button" value="view all Staff details"></a>
         <a href="view_staff_by_id.jsp"><input type="button" value="view staff details by id"></a>
         <a href="edit_staff.jsp"><input type="button" value="edit Staff details"></a>
+        <a href="add_staff.jsp"><input type="button" value="add Staff details"></a>
     </ul>
 </div>
 

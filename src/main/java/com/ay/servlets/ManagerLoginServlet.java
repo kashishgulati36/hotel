@@ -1,6 +1,7 @@
 package com.ay.servlets;
 
 import com.ay.bean.Managerbean;
+import com.ay.bean.StaffBean;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ public class ManagerLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Managerbean mb=(Managerbean) req.getAttribute("mbean");
+        StaffBean sb=(StaffBean) req.getAttribute("sbean");
         if(mb==null){
             RequestDispatcher rd=req.getRequestDispatcher("manager.jsp");
             rd.include(req,resp);
@@ -23,6 +25,7 @@ public class ManagerLoginServlet extends HttpServlet {
         else{
             HttpSession hs=req.getSession();
             hs.setAttribute("mbean",mb);
+            hs.setAttribute("sbean",sb);
             RequestDispatcher rd=req.getRequestDispatcher("Welcome.jsp");
             rd.include(req,resp);
         }
