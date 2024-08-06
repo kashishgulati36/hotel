@@ -2,6 +2,7 @@ package com.ay.filter;
 
 import com.ay.DAO.ManagerLoginDAO;
 import com.ay.bean.Managerbean;
+import com.ay.bean.RoomBean;
 import com.ay.bean.StaffBean;
 
 import javax.servlet.FilterChain;
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServlet;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebFilter("/manager1")
 public class ManagerFilter extends HttpFilter {
@@ -20,21 +22,25 @@ public class ManagerFilter extends HttpFilter {
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         Managerbean mb=new Managerbean();
-        StaffBean sb=new StaffBean();
+
         mb.setMid(req.getParameter("mid"));
         mb.setMpword(req.getParameter("mpass"));
 
         ManagerLoginDAO dao= new ManagerLoginDAO();
        mb=dao.getlogin(mb);
-       sb=dao.getstaffdetails(mb);
+
 
        if(mb==null){
            req.setAttribute("msg","invalid username or password");
        }
        else{
+           ArrayList<StaffBean> al = dao.getstaffdetails(mb);
+           ArrayList<RoomBean> rl=dao.getroomdetails();
+          // System.out.println(al);
            req.setAttribute("mbean",mb);
-           req.setAttribute("sbean",sb);
+           req.setAttribute("items",al);
+           req.setAttribute("rooms",rl);
        }
-        super.doFilter(req, res, chain);
+       chain.doFilter(req, res);
     }
 }

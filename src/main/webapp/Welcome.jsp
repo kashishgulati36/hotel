@@ -1,4 +1,6 @@
 <%@ page import="com.ay.bean.Managerbean" %>
+<%@ page import="com.ay.bean.StaffBean" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,6 +10,8 @@
 <%
     HttpSession hs= request.getSession(false);
     Managerbean mb=(Managerbean) hs.getAttribute("mbean");
+    //ArrayList<StaffBean> al=(ArrayList<StaffBean>) hs.getAttribute("items");
+   // System.out.println(al.size());
     if(mb==null){
         request.setAttribute("msg","session expired");
         request.getRequestDispatcher("manager.jsp").include(request,response);
@@ -20,7 +24,6 @@
 <div id="staffInfo" class="info-section">
     <ul>
         <a href="view_all_staff.jsp"><input type="button" value="view all Staff details"></a>
-        <a href="view_staff_by_id.jsp"><input type="button" value="view staff details by id"></a>
         <a href="edit_staff.jsp"><input type="button" value="edit Staff details"></a>
         <a href="add_staff.jsp"><input type="button" value="add Staff details"></a>
     </ul>
@@ -29,9 +32,10 @@
 <a href="#roomInfo">Room Info</a>
 <div id="roomInfo" class="info-section">
     <ul>
-       <a href="room.jsp"><input type="button" value="check all rooms status"></a>
-        <a><input type="button" value="check status by room number"></a>
-        <a><input type="button" value="update status"></a>
+        <a href="roomdetails.jsp">view all rooms</a>
+       <a href="room.jsp">check all rooms status</a>
+        <a>check status by room number</a>
+        <a>update status</a>
     </ul>
 </div>
 
@@ -42,8 +46,15 @@
 
     </ul>
 </div>
+<a href="logout.jsp">LOGOUT</a>
 <%
     }
+%>
+<%
+   String msg=(String) request.getAttribute("msg");
+   if(msg!=null){
+       out.print(msg);
+   }
 %>
 </body>
 </html>

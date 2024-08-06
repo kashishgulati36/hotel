@@ -1,4 +1,5 @@
-<%@ page import="com.ay.bean.StaffBean" %><%--
+<%@ page import="com.ay.bean.StaffBean" %>
+<%@ page import="com.ay.bean.Managerbean" %><%--
   Created by IntelliJ IDEA.
   User: komal
   Date: 8/1/2024
@@ -13,8 +14,8 @@
 <body>
 <%
     HttpSession hs= request.getSession(false);
-    StaffBean sb=(StaffBean) hs.getAttribute("sbean");
-    if(sb==null){
+    Managerbean mb=(Managerbean) hs.getAttribute("mbean");
+    if(mb==null){
         request.setAttribute("msg","session expired");
         request.getRequestDispatcher("manager.jsp").include(request,response);
     }
@@ -23,11 +24,11 @@
 
 %>
 <form action="staff1" method="post">
-ENTER NAME :<input type="text" name="sname">
-ENTER DESIGNATION:<input type="text" name="sdesg">
-ENTER PHONE:<input type="text" name="sphone" maxlength="10">
-ENTER GENDER:<input type="text" name="gender">
-ENTER MANAGER ID:<input type="text" name="mid">
+ENTER NAME :<input type="text" name="sname"><br>
+ENTER DESIGNATION:<input type="text" name="sdesg"><br>
+ENTER PHONE:<input type="text" name="sphone" maxlength="10"><br>
+ENTER GENDER:<input type="text" name="gender"><br>
+ENTER MANAGER ID:<input type="text" name="mid"><br>
     <input type="submit">
 </form>
     <%
