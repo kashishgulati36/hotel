@@ -12,11 +12,11 @@
 </head>
 <body>
 <form action="staff_edit" method="post">
-ENTER STAFF NAME:<input type="text" name="sname">
-ENTER OLD DESIGNATION:<input type="text" name="odesg">
-ENTER NEW DESIGNATION:<input type="text" name="ndesg">
-ENTER UPDATED PHONE NUMBER<input  type="text" name="uphone">
-
+ENTER STAFF NAME:<input type="text" name="sname"><br>
+ENTER OLD DESIGNATION:<input type="text" name="odesg"><br>
+ENTER NEW DESIGNATION:<input type="text" name="ndesg"><br>
+ENTER REGISTERED PHONE NUMBER<input  type="text" name="uphone"><br>
+<input type="submit">
 </form>
 </body>
 </html>
