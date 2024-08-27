@@ -37,6 +37,9 @@
         <th>FLOOR NO.</th>
         <th>TYPE</th>
         <th>STATUS</th>
+        <th>GUEST NAME</th>
+        <th>GUEST PHONE</th>
+        <th>GUEST AADHAAR</th>
         </thead>
         <tbody>
         <%
@@ -47,6 +50,9 @@
             <td><%=s.getFloorno()%></td>
             <td><%=s.getRtype()%></td>
             <td><%=s.getRstatus()%></td>
+            <td><%=s.getGname()%></td>
+            <td><%=s.getGphone()%></td>
+            <td><%=s.getGaadahar()%></td>
 
 
         </tr>

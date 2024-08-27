@@ -4,7 +4,31 @@ import java.io.Serializable;
 
 public class RoomBean implements Serializable {
     private int rno,floorno;
-    private String rtype,rstatus;
+    private String rtype,rstatus,gname,gphone,gaadahar;
+
+    public String getGaadahar() {
+        return gaadahar;
+    }
+
+    public void setGaadahar(String gaadahar) {
+        this.gaadahar = gaadahar;
+    }
+
+    public String getGphone() {
+        return gphone;
+    }
+
+    public void setGphone(String gphone) {
+        this.gphone = gphone;
+    }
+
+    public String getGname() {
+        return gname;
+    }
+
+    public void setGname(String gname) {
+        this.gname = gname;
+    }
 
     public int getRno() {
         return rno;
@@ -45,6 +69,9 @@ public class RoomBean implements Serializable {
                 ", floorno=" + floorno +
                 ", rtype='" + rtype + '\'' +
                 ", rstatus='" + rstatus + '\'' +
+                ", gname='" + gname + '\'' +
+                ", gphone='" + gphone + '\'' +
+                ", gaadahar='" + gaadahar + '\'' +
                 '}';
     }
 

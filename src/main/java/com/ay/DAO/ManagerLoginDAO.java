@@ -71,6 +71,10 @@ public class ManagerLoginDAO {
                 rb.setFloorno(rs.getInt(2));
                 rb.setRtype(rs.getString(3));
                 rb.setRstatus(rs.getString(4));
+                rb.setGname(rs.getString(5));
+                rb.setGphone(rs.getString(6));
+                rb.setGaadahar(rs.getString(7));
+
                 rl.add(rb);
             }
         }
@@ -78,5 +82,45 @@ public class ManagerLoginDAO {
             e.printStackTrace();
         }
         return rl;
+    }
+
+    public RoomBean roominfo(RoomBean rb){
+        RoomBean r=new RoomBean();
+        try{
+           Connection con=DBConnection.getConnection();
+           PreparedStatement ps=con.prepareStatement("SELECT * FROM HOTELROOMS WHERE ROOM_NO=?");
+           ps.setInt(1,rb.getRno());
+           ResultSet rs= ps.executeQuery();
+           while (rs.next()){
+               r.setRno(rs.getInt(1));
+               r.setFloorno(rs.getInt(2));
+               r.setRtype(rs.getString(3));
+               r.setRstatus(rs.getString(4));
+               r.setGname(rs.getString(5));
+               r.setGphone(rs.getString(6));
+               r.setGaadahar(rs.getString(7));
+           }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return r;
+    }
+    public int updateroom(RoomBean rb) {
+        int k=0;
+        try{
+            Connection con= DBConnection.getConnection();
+            PreparedStatement ps= con.prepareStatement("UPDATE HOTELROOMS SET ROOM_STATUS=?,GUESTNAME=?,GUESTPHONE=?,AADHAR=? WHERE ROOM_NO=?");
+            ps.setString(1,rb.getRstatus());
+            ps.setString(2,rb.getGname());
+            ps.setString(3,rb.getGphone());
+            ps.setString(4, rb.getGaadahar());
+            ps.setInt(5,rb.getRno());
+            k= ps.executeUpdate();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return k;
     }
 }
